@@ -1,0 +1,3 @@
+[submodule "ext/FrogEngine"]
+	path = ext/FrogEngine
+	url = https://github.com/Patrycioss/FrogEngine.git

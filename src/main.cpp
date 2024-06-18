@@ -1,9 +1,13 @@
 ﻿
-#include <cstdio>
+#include <FrogEngine.hpp>
+
+#include "PhysicsDemo.hpp"
 
 int main() {
   
-  printf("ha");
-
+  
+  fe::Engine::Initialize();
+  PhysicsDemo::PhysicsDemo physicsDemo{};
+  fe::Engine::Start(physicsDemo);
   return 0;
 }
