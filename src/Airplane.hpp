@@ -5,15 +5,17 @@
 namespace PhysicsDemo
 {
 
- class MovablePlatform : public fe::GameObject{
+ class Airplane : public fe::GameObject{
   private:
    static constexpr float FORCE = 200000;
+   
+   fe::AnimatedSprite* animatedSprite;
    
   protected:
    void Update(float _deltaTime) override;
    
   public:
-   explicit MovablePlatform(b2Vec2 _position);
+   explicit Airplane(b2Vec2 _position);
   };
 
 } // PhysicsDemo

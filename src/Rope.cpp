@@ -27,9 +27,9 @@ namespace PhysicsDemo
 
 	  weldJointDef.localAnchorB = b2Vec2(0, -halfSegmentLength);
 	  weldJointDef.bodyIdB = anchorSegment->GetBody();
-	  weldJointDef.collideConnected = true;
-	  weldJointDef.angularHertz = 60;
-	  weldJointDef.linearHertz = 60;
+	  weldJointDef.collideConnected = false;
+	  weldJointDef.angularHertz = 120;
+	  weldJointDef.linearHertz = 120;
 
 	  b2CreateWeldJoint(fe::Engine::GetWorldId(), &weldJointDef);
 	}

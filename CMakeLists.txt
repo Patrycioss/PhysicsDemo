@@ -12,7 +12,7 @@ add_executable(
         PhysicsDemo
         
         src/main.cpp
-        src/MovablePlatform.cpp
+        src/Airplane.cpp
         src/PhysicsDemo.cpp
         src/RopeSegment.cpp
         src/Rope.cpp
