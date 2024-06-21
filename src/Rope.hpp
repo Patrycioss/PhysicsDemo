@@ -5,13 +5,23 @@
 namespace PhysicsDemo
 {
   class Rope {
+   public:
+	struct Settings{
+	  b2BodyId anchorBody;
+	  b2Vec2 anchorPosition; 
+	  int length; 
+	  float ropeWidth;
+	  float segmentLength;
+	};
+	
    private:
 	std::vector<RopeSegment*> segments;
 	std::vector<b2WeldJointDef> jointDefs;
 
    public:
-	Rope(const b2BodyId& _anchorBody, const b2Vec2& _anchorPosition, int _length, float _ropeWidth, float _segmentLength);
-	Rope(const b2Vec2& _anchorPosition, int _length, float _ropeWidth, float _segmentLength);
+	Rope(const Settings& _settings);
+	
+	RopeSegment* GetLastSegment() const;
   };
 }
 

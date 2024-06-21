@@ -1,13 +1,15 @@
 ﻿#include "PhysicsDemo.hpp"
 #include "Airplane.hpp"
+#include "WreckingBlock.hpp"
 
 namespace PhysicsDemo
 {
   PhysicsDemo::PhysicsDemo() {
 	fe::Engine::SetGravity({0, 100});
 	fe::Engine::SetBackgroundColour(fe::Colour{173, 216, 230});
+	fe::Engine::SetWindowSize(1600, 900);
 	
-//	fe::Box2DDebug::Enable();
+	fe::Box2DDebug::Enable();
 
 	b2Vec2 windowSize = fe::Engine::GetWindowSize();
 
@@ -37,8 +39,14 @@ namespace PhysicsDemo
 	 
 	}
 	
-	Rope rope(bodyId, b2Vec2(0, 5), 20, 10, 15);
-	Instantiate<Zombie>(fe::Key::A, fe::Key::D, b2Vec2{400, 500});
+	Rope::Settings ropeSettings{bodyId, b2Vec2{0,5},20,10,15};
+	WreckingBlock wreckingBall(ropeSettings, 5);
+	Zombie* zombie = Instantiate<Zombie>(fe::Key::A, fe::Key::D, b2Vec2{305, 500});
+	
+//	b2WeldJointDef weldJointDef = b2DefaultWeldJointDef();
+//	weldJointDef.bodyIdA = wreckingBall.GetLastSegment()->GetBody();
+//	weldJointDef.bodyIdB = zombie->GetBody();
+//	b2CreateWeldJoint(fe::Engine::GetWorldId(), &weldJointDef);
 
 	b2Polygon horBoundBox = b2MakeBox(windowSize.x / 2.0f, 5);
 	b2Polygon vertBoundBox = b2MakeBox(5, windowSize.y / 2.0f);
@@ -67,7 +75,7 @@ namespace PhysicsDemo
   }
 
   void PhysicsDemo::Update(float _deltaTime) {
-
+	printf("_deltaTime: %f\n", _deltaTime);
   }
 
   void PhysicsDemo::Stop() {

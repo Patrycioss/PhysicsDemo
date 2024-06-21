@@ -17,6 +17,8 @@ add_executable(
         src/RopeSegment.cpp
         src/Rope.cpp
         src/Zombie.cpp
+        src/WreckingBall.cpp
+        src/SteelBlock.cpp
 )
 
 target_link_libraries(PhysicsDemo
