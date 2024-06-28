@@ -18,13 +18,13 @@ namespace PhysicsDemo
 	b2Polygon polygon = b2MakeOffsetBox(37, 52, {0,12}, 0);
 	shapeDef.friction = 0.5f;
 	shapeDef.density = 100;
-	b2Body_SetFixedRotation(body,true);
+	b2Body_SetFixedRotation(body.ID(),true);
 	AddShape(polygon);
 	
 	
 	b2MassData massData{};
 	massData.mass = 100;
-	b2Body_SetMassData(body, massData);
+	b2Body_SetMassData(body.ID(), massData);
   }
 
   void Zombie::Update(float _deltaTime) {

@@ -8,7 +8,7 @@ PhysicsDemo::SteelBlock::SteelBlock(const b2Vec2& _position, float _radius)
 
   shapeDef.density = 0.5f;
   
-  b2Body_SetFixedRotation(body, true);
+  b2Body_SetFixedRotation(body.ID(), true);
   b2Polygon polygon = b2MakeBox(size.x/2.0f, size.y/2.0f);
   AddShape(polygon);
 }

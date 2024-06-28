@@ -21,17 +21,18 @@ namespace PhysicsDemo
 		weldJointDef.bodyIdA = _settings.anchorBody;
 		weldJointDef.localAnchorA = _settings.anchorPosition;
 	  } else {
-		weldJointDef.bodyIdA = segments[i - 1]->GetBody();
+		weldJointDef.bodyIdA = segments[i - 1]->GetBody().ID();
 		weldJointDef.localAnchorA = b2Vec2(0, halfSegmentLength);
 	  }
 
 	  weldJointDef.localAnchorB = b2Vec2(0, -halfSegmentLength);
-	  weldJointDef.bodyIdB = anchorSegment->GetBody();
-	  weldJointDef.collideConnected = false;
-	  weldJointDef.angularHertz = 120;
-	  weldJointDef.linearHertz = 120;
+	  weldJointDef.bodyIdB = anchorSegment->GetBody().ID();
+	  weldJointDef.collideConnected = true;
+	  weldJointDef.angularHertz = 60;
+	  weldJointDef.linearHertz = 60;
+	  weldJointDef.linearDampingRatio = 1;
 
-	  b2CreateWeldJoint(fe::Engine::GetWorldId(), &weldJointDef);
+	  b2CreateWeldJoint(fe::Engine::GetWorld().ID(), &weldJointDef);
 	}
   }
   

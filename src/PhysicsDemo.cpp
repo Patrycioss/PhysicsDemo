@@ -13,7 +13,7 @@ namespace PhysicsDemo
   PhysicsDemo::PhysicsDemo() {
 	std::uniform_int_distribution<std::mt19937::result_type> dist6(1,6);
 	
-	fe::Engine::SetGravity({0, 100});
+	fe::Engine::GetWorld().GetDef().gravity = {0, 100};
 	fe::Engine::SetBackgroundColour(fe::Colour{173, 216, 230});
 	fe::Engine::SetWindowSize(1600, 900);
 	
@@ -41,13 +41,13 @@ namespace PhysicsDemo
 	  sun->AddShape(polygon);
 	}
 
-	b2BodyId bodyId =  Instantiate<Airplane>(b2Vec2{300,200})->GetBody();
+	fe::Body& body =  Instantiate<Airplane>(b2Vec2{300,200})->GetBody();
 
 	{
 	 
 	}
 	
-	Rope::Settings ropeSettings{bodyId, b2Vec2{0,5},20,10,15};
+	Rope::Settings ropeSettings{body.ID(), b2Vec2{0,5},20,10,10};
 	WreckingBlock wreckingBall(ropeSettings, 5);
 	Zombie* zombie = Instantiate<Zombie>(fe::Key::A, fe::Key::D, b2Vec2{305, 500});
 	
