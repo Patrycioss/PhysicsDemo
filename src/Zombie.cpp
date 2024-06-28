@@ -18,13 +18,13 @@ namespace PhysicsDemo
 	b2Polygon polygon = b2MakeOffsetBox(37, 52, {0,12}, 0);
 	shapeDef.friction = 0.5f;
 	shapeDef.density = 100;
-	b2Body_SetFixedRotation(body,true);
+	b2Body_SetFixedRotation(body.ID(),true);
 	AddShape(polygon);
 	
 	
 	b2MassData massData{};
 	massData.mass = 100;
-	b2Body_SetMassData(body, massData);
+	b2Body_SetMassData(body.ID(), massData);
   }
 
   void Zombie::Update(float _deltaTime) {
@@ -33,14 +33,14 @@ namespace PhysicsDemo
 	if (fe::Input::GetKey(rightKey)){
 	  sprite->FlipHorizontal(false);
 	  SetState(State::Walking);
-	  b2Body_ApplyForceToCenter(body, {20000,0}, true);
+	  b2Body_ApplyForceToCenter(body.ID(), {20000,0}, true);
 //	  b2Body_ApplyLinearImpulseToCenter(body, b2Vec2{200,0} * _deltaTime, true);
 //	  SetPosition(GetPosition() + b2Vec2{150 * _deltaTime,0});
 	}
 	else if (fe::Input::GetKey(leftKey)){
 	  sprite->FlipHorizontal(true);
 	  SetState(State::Walking);
-	  b2Body_ApplyForceToCenter(body, {-20000,0}, true);
+	  b2Body_ApplyForceToCenter(body.ID(), {-20000,0}, true);
 //	  b2Body_ApplyLinearImpulseToCenter(body, b2Vec2{-2000,0} * _deltaTime, true);
 //	  SetPosition(GetPosition() - b2Vec2{150 * _deltaTime,0});
 	}
@@ -49,7 +49,7 @@ namespace PhysicsDemo
 	}
 
 	if (fe::Input::GetKeyDown(fe::Key::SPACE)){
-	  b2Body_ApplyForceToCenter(body, {0,-2000000}, true);
+	  b2Body_ApplyForceToCenter(body.ID(), {0,-2000000}, true);
 	}
   }
 
