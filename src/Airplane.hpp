@@ -7,7 +7,7 @@ namespace PhysicsDemo
 
  class Airplane : public fe::GameObject{
   private:
-   static constexpr float FORCE = 300000;
+   static constexpr float FORCE = 600000;
    
    fe::AnimatedSprite* animatedSprite;
    

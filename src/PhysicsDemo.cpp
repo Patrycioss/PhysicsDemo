@@ -79,7 +79,19 @@ namespace PhysicsDemo
   }
 
   void PhysicsDemo::Start() {
+	b2Vec2 windowSize = fe::Engine::GetWindowSize();
+	b2Vec2 halfWindowSize = {windowSize.x/2.0f, windowSize.y/2.0f};
+	
+	for (int i = 0; i < 20; i++){
 
+	  b2Vec2 position = halfWindowSize;
+	  position.x += random.i(100) * (random.i(1) == 1? 1 : -1);
+	  Instantiate<Ball>( position, random.d(100) + 1);
+	}
+	
+	Ball* bullet = Instantiate<Ball>(halfWindowSize + b2Vec2{0, - 200}, 100);
+	bullet->GetShapeDef().density = 1000000;
+	b2Body_ApplyLinearImpulseToCenter(bullet->GetBody(), b2Vec2{0, 10000000000}, true);
   }
 
   void PhysicsDemo::Update(float _deltaTime) {

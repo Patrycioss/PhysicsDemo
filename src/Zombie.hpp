@@ -11,6 +11,9 @@ namespace PhysicsDemo
 	 Standing
    }; 
    
+   static constexpr float FORCE = 40000;
+   static constexpr float JUMPFORCE = 6000000;
+   
    State currentState;
    fe::AnimatedSprite* sprite;
    
