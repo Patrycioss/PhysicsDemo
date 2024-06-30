@@ -1,10 +1,18 @@
 ﻿#include "PhysicsDemo.hpp"
+
+#include <grand.h>
+
+
 #include "Airplane.hpp"
 #include "WreckingBlock.hpp"
+#include "Ball.hpp"
+
 
 namespace PhysicsDemo
 {
   PhysicsDemo::PhysicsDemo() {
+	std::uniform_int_distribution<std::mt19937::result_type> dist6(1,6);
+	
 	fe::Engine::SetGravity({0, 100});
 	fe::Engine::SetBackgroundColour(fe::Colour{173, 216, 230});
 	fe::Engine::SetWindowSize(1600, 900);
@@ -75,7 +83,14 @@ namespace PhysicsDemo
   }
 
   void PhysicsDemo::Update(float _deltaTime) {
-	printf("_deltaTime: %f\n", _deltaTime);
+//	printf("_deltaTime: %f\n", _deltaTime);
+	
+	float radius = (float) random.d(100) + 1;
+
+	if (fe::Input::GetKeyDown(fe::Key::BACKSPACE)){
+	  b2Vec2 windowSize = fe::Engine::GetWindowSize();
+	  Instantiate<Ball>(b2Vec2{windowSize.x/2.0f, windowSize.y/2.0f}, radius);
+	}
   }
 
   void PhysicsDemo::Stop() {

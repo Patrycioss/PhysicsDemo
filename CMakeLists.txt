@@ -19,8 +19,11 @@ add_executable(
         src/Zombie.cpp
         src/WreckingBall.cpp
         src/SteelBlock.cpp
+        src/Ball.cpp
 )
 
 target_link_libraries(PhysicsDemo
         FrogEngine
 )
+
+target_include_directories(PhysicsDemo PRIVATE ext/GRand)

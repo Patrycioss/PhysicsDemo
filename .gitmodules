@@ -1,3 +1,6 @@
 [submodule "ext/FrogEngine"]
 	path = ext/FrogEngine
 	url = https://github.com/Patrycioss/FrogEngine.git
+[submodule "ext/GRand"]
+	path = ext/GRand
+	url = https://github.com/ggchappell/GRand.git
