@@ -9,5 +9,5 @@ Ball::Ball(const b2Vec2& _position, float _radius)
   shapeDef.density = 0.001f;
   b2Circle circle{{0,0}, _radius};
 //  circle.center = {_radius, _radius};
-  b2CreateCircleShape(body, &shapeDef, &circle);
+  b2CreateCircleShape(body.ID(), &shapeDef, &circle);
 }

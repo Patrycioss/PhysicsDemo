@@ -91,7 +91,7 @@ namespace PhysicsDemo
 	
 	Ball* bullet = Instantiate<Ball>(halfWindowSize + b2Vec2{0, - 200}, 100);
 	bullet->GetShapeDef().density = 1000000;
-	b2Body_ApplyLinearImpulseToCenter(bullet->GetBody(), b2Vec2{0, 10000000000}, true);
+	b2Body_ApplyLinearImpulseToCenter(bullet->GetBody().ID(), b2Vec2{0, 10000000000}, true);
   }
 
   void PhysicsDemo::Update(float _deltaTime) {

@@ -33,14 +33,14 @@ namespace PhysicsDemo
 	if (fe::Input::GetKey(rightKey)){
 	  sprite->FlipHorizontal(false);
 	  SetState(State::Walking);
-	  b2Body_ApplyForceToCenter(body, {FORCE,0}, true);
+	  b2Body_ApplyForceToCenter(body.ID(), {FORCE,0}, true);
 //	  b2Body_ApplyLinearImpulseToCenter(body, b2Vec2{200,0} * _deltaTime, true);
 //	  SetPosition(GetPosition() + b2Vec2{150 * _deltaTime,0});
 	}
 	else if (fe::Input::GetKey(leftKey)){
 	  sprite->FlipHorizontal(true);
 	  SetState(State::Walking);
-	  b2Body_ApplyForceToCenter(body, {-FORCE,0}, true);
+	  b2Body_ApplyForceToCenter(body.ID(), {-FORCE,0}, true);
 //	  b2Body_ApplyLinearImpulseToCenter(body, b2Vec2{-2000,0} * _deltaTime, true);
 //	  SetPosition(GetPosition() - b2Vec2{150 * _deltaTime,0});
 	}
@@ -49,7 +49,7 @@ namespace PhysicsDemo
 	}
 
 	if (fe::Input::GetKeyDown(fe::Key::SPACE)){
-	  b2Body_ApplyForceToCenter(body, {0,-JUMPFORCE}, true);
+	  b2Body_ApplyForceToCenter(body.ID(), {0,-JUMPFORCE}, true);
 	}
   }
 
